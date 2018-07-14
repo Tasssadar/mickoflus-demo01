@@ -16,8 +16,8 @@
 #include "motors.hpp"
 
 // CHANGE THESE so you can find the robot in the Android app
-#define OWNER "FrantaFlinta"
-#define NAME "FlusMcFlusy"
+#define OWNER "Vojta"
+#define NAME "Fluska"
 
 // CHANGE THESE to your WiFi's settings
 #define WIFI_NAME "Mickoland"
@@ -42,12 +42,12 @@ extern "C" void app_main() {
     // Measure voltage at battery connector and
     // coef = voltageMeasureAtBatteriesInMilliVolts / raw
     auto& batt = man.battery();
-    batt.setCoef(9.0);
+    batt.setCoef(8.48f);
 
     // Connect to the WiFi network
-    // If the button 1 is not pressed: connect to WIFI_NAME
+    // If the button 1 is pressed: connect to WIFI_NAME
     // else create an AP.
-    if(man.expander().digitalRead(rb::SW1) != 0) {
+    if(man.expander().digitalRead(rb::SW1) != 1) {
         man.leds().yellow();
         rb::WiFi::connect(WIFI_NAME, WIFI_PASSWORD);
     } else {
@@ -62,7 +62,7 @@ extern "C" void app_main() {
         .pwmMaxPercent(MOTOR_LEFT, 70)  // left wheel
         .pwmMaxPercent(MOTOR_RIGHT, 70)  // right wheel
         .pwmMaxPercent(MOTOR_TURRET_ROTATION, 28)  // turret left/right
-        .pwmMaxPercent(MOTOR_TURRET_PITCH, 45)  // turret up/down
+        .pwmMaxPercent(MOTOR_TURRET_PITCH, 35)  // turret up/down
         .set();
 
     // Initialize the communication protocol

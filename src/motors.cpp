@@ -66,7 +66,7 @@ void motors_handle_joysticks(rb::Manager *man, rbjson::Object *pkt) {
             if(y > 0)
                 y = scale_range_decel(y, RBPROTOCOL_AXIS_MIN, RBPROTOCOL_AXIS_MAX, -100, 100);
             else
-                y = scale_range_decel(y, RBPROTOCOL_AXIS_MIN, RBPROTOCOL_AXIS_MAX, -75, 75);
+                y = scale_range_decel(y, RBPROTOCOL_AXIS_MIN, RBPROTOCOL_AXIS_MAX, -50, 50);
         }
 
         builder.power(MOTOR_TURRET_ROTATION, x).power(MOTOR_TURRET_PITCH, y);
